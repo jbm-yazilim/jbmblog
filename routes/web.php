@@ -16,5 +16,13 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+Route::prefix('admin')->group(function (){
+   Route::get('dashboard',function (){
+       return view('admin.dashboard');
+   }) ;
+    Route::get('/list',function (){
+        return view('admin.blog.index');
+    }) ;
+});
 
 require __DIR__.'/auth.php';
